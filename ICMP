@@ -7,7 +7,7 @@ trying to send only 1 packet using  -c 1
 
 ping -c1 192.168.57.2
 
-Bash script to ping all the IP Addresses
+Bash script to ping all the IP Addresses at once
 
 
 #!/bin/bash
@@ -22,7 +22,8 @@ done
 fi
 
 
-To save it in a text file replace the 20th line with the below command
+
+To Ping and save the result in a text file (replace the 20th line with the below command)
 
 ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" >> ipaddresses.txt &
 
