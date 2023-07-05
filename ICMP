@@ -1,7 +1,7 @@
 Check the IP address - ifconfig
 trying to send only 1 packet use -c  
 ping 192.168.2.29 -c 1
-
+ 
 ping 192.168.2.29 -c 1 > ip.txt
 cat ip.txt
 we will extract this line which contains the ip address, we are doing pingsweeper for every IP address within this subnet 
