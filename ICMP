@@ -1,14 +1,13 @@
-Check the IP address - ifconfig
-trying to send only 1 packet use -c  
-ping 192.168.2.29 -c 1
+                                To ping all the IP addresses in your network 
 
-ping 192.168.2.29 -c 1 > ip.txt
-cat ip.txt
-we will extract this line which contains the ip address, we are doing pingsweeper for every IP address within this subnet 
-192.168.57.0/24
-cat ip.txt | grep "64 bytes" | cut -d (delimeter) " " -f (field) 4 | tr -d ":" 
-using translate for IP to remove the colon at the end and delimereter to get rid of colon ":"
+Check the IP address using the command - ifconfig
+Ping any of the devices in the same network (ex ping 192.168.57.2)
+We can limit the packets count using the flag -c in the ping 
+trying to send only 1 packet using  -c 1 
 
+ping -c1 192.168.57.2
+
+Bash script to ping all the IP Addresses
 
 
 #!/bin/bash
@@ -16,7 +15,6 @@ if [ "$1" == "" ]
 then
 echo "You forgot an IP address!"
 echo "Syntax: ./pingsweep.sh 192.168.1"
-
 else
 for ip in `seq 1 254`; do
 ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" &
@@ -24,7 +22,7 @@ done
 fi
 
 
-To save it in a text file 
+To save it in a text file replace the 20th line with the below command
 
 ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" >> ipaddresses.txt &
 
